@@ -95,8 +95,17 @@ function App() {
     else  return 'rounded-t-full';
   }
 
+  const handleTouchDir = (newDir) => {
+    if ((newDir === 'w' && dir !== 's') ||
+        (newDir === 'a' && dir !== 'd') ||
+        (newDir === 's' && dir !== 'w') ||
+        (newDir === 'd' && dir !== 'a')) {
+      setDir(newDir);
+    }
+  };
+
   return (
-    <div className='bg-green-100 w-screen md:p-0 p-4 h-screen overflow-hidden flex flex-col md:flex-row md:space-x-5 justify-center items-center'>
+    <div className='bg-green-100 w-screen md:p-0 p-4 h-screen overflow-hidden flex flex-col  md:space-y-0 gap-y-10 md:flex-row md:space-x-5 md:justify-center items-center'>
       <div className={`grid grid-cols-20 grid-rows-20 border-2`} ref={gridRef} tabIndex={0} onKeyDown={dirChange}>
         {
           grid.map((g, i) => (
@@ -122,6 +131,15 @@ function App() {
         <div className='flex flex-row font-semibold text-2xl'>
           <div>Score:</div>
           <div>{score}</div>
+        </div>
+      </div>
+
+      <div className="mt-6 sm:hidden flex flex-col items-center gap-3">
+        <button onClick={() => handleTouchDir('w')} className="arrow-button">↑</button>
+        <div className="flex gap-3">
+          <button onClick={() => handleTouchDir('a')} className="arrow-button">←</button>
+          <button onClick={() => handleTouchDir('s')} className="arrow-button">↓</button>
+          <button onClick={() => handleTouchDir('d')} className="arrow-button">→</button>
         </div>
       </div>
     </div>
