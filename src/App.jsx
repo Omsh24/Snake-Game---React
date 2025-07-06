@@ -105,11 +105,11 @@ function App() {
   };
 
   return (
-    <div className='bg-green-100 w-screen md:p-0 p-4 h-screen overflow-hidden flex flex-col  md:space-y-0 gap-y-10 md:flex-row md:space-x-5 md:justify-center items-center'>
+    <div className='bg-green-100 w-[screen] md:p-0 p-4 h-screen overflow-hidden flex flex-col  md:space-y-0 md:flex-row md:space-x-5 md:justify-center items-center'>
       <div className={`grid grid-cols-20 grid-rows-20 border-2`} ref={gridRef} tabIndex={0} onKeyDown={dirChange}>
         {
           grid.map((g, i) => (
-            <div key={i} className={`border-1 border-gray-200 md:w-[25px] md:h-[25px] w-[20px] h-[20px] flex justify-center items-center 
+            <div key={i} className={`border-1 border-gray-200 md:w-[25px] md:h-[25px] w-[15px] h-[15px] flex justify-center items-center 
               ${i == (head[0] * rows + head[1]) ? `bg-green-600 ${borderdecider()}` : ''}
               ${(food[0] == -1 || food[1] == -1) ? '' : i === (food[0] * rows + food[1]) ? 'bg-red-500 rounded-full' : ''}
               ${body.includes(i) ? 'bg-green-400 rounded-md' : ''}
